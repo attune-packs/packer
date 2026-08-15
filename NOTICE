@@ -1,0 +1,10 @@
+This product includes an adaptation of the StackStorm Exchange Packer pack,
+version 1.0.0, originally authored by James Fryman.
+
+Source: https://github.com/StackStorm-Exchange/stackstorm-packer
+Revision: af813347fdf92cb24e466d4c0f57d9de73196407
+License: Apache License 2.0
+
+The implementation and Attune component metadata have been substantially
+modified. HashiCorp and Packer are trademarks of HashiCorp, Inc.; use is
+descriptive only.

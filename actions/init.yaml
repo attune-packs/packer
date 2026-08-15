@@ -1,0 +1,30 @@
+ref: packer.init
+label: "Initialize Packer Plugins"
+description: "Install required HCL template plugins into the execution artifact area"
+enabled: true
+runner_type: python
+runtime_version: ">=3.10"
+entry_point: packer_action.py
+parameter_delivery: stdin
+parameter_format: json
+output_format: json
+parameters:
+  template: {type: string, required: true, description: "HCL template file or directory beneath ATTUNE_ARTIFACTS_DIR"}
+  working_directory: {type: string, default: ".", description: "Working directory beneath ATTUNE_ARTIFACTS_DIR"}
+  environment: {type: object, default: {}, secret: true, description: "Explicit network/provider environment values; confinement variables are reserved"}
+  upgrade: {type: boolean, default: false}
+  force: {type: boolean, default: false}
+  timeout_seconds: {type: integer, default: 120, minimum: 1, maximum: 7200}
+output:
+  operation: {type: string, required: true}
+  success: {type: boolean, required: true}
+  exit_code: {type: integer, required: true}
+  timed_out: {type: boolean, required: true}
+  duration_seconds: {type: number, required: true}
+  command: {type: array, required: true, items: {type: string}}
+  working_directory: {type: string, required: true}
+  stdout: {type: string, required: true}
+  stderr: {type: string, required: true}
+  output_truncated: {type: boolean, required: true}
+  events: {type: array, required: true, items: {type: object}}
+tags: [packer, init, plugins]
